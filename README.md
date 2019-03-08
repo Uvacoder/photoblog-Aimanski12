@@ -14,5 +14,5 @@ An web application for blogging photos.
 * Create a dynamic UI by allowing user to upload images to the server.<br>
 
 # The PhotoBlog App looks like this
-<br>
+
 ![Screenshot](img/screen.png)
