@@ -1,6 +1,6 @@
 # PhotoBlog
 
-An web application for blogging photos.
+A web application for blogging photos.
 
 # What I Learned
 
