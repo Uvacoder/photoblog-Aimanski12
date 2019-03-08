@@ -15,4 +15,4 @@ An web application for blogging photos.
 
 # The PhotoBlog App looks like this
 <br>
-![Screen Shot](/img/screen.png)
+![Screen Shot](img/screen.png)
