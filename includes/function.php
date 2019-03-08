@@ -1,10 +1,13 @@
 <?php
 
+
+// redirection
 function redirect($location){
   return header("Location: ". $location);
 }
 
 
+// uploading files
 function upload_file($temp_name, $file_name){
     if(move_uploaded_file($temp_name, "../img_upload/$file_name")){
       // echo 'file is uploaded';
@@ -15,6 +18,8 @@ function upload_file($temp_name, $file_name){
     }
 }
 
+
+// inserting files
 function insert_post($id, $title, $comment, $filename, $location){
   $id = addslashes($id);
     $title = addslashes($title);
@@ -44,6 +49,8 @@ function insert_post($id, $title, $comment, $filename, $location){
    return $post_id;
 }
 
+
+// update posts 
 function update_post12($post_id, $user_id, $post_title, $post_comment, $file_name, $file_location){
   $db = new mysqli();
     $db->connect("localhost", "bonbon", "123", "social_media");
@@ -72,8 +79,8 @@ function update_post12($post_id, $user_id, $post_title, $post_comment, $file_nam
 }
 
 
+// updating user information
 function update_user($id, $name, $email, $pwd, $file){
-
   $db = new mysqli();
     $db->connect("localhost", "bonbon", "123", "social_media");
   $sql = "UPDATE `user` SET ";
@@ -93,6 +100,8 @@ function update_user($id, $name, $email, $pwd, $file){
   $db->close();
 }
 
+
+// get user id
 function get_id_post(){
   global $db;
   require_once("db.php");
@@ -101,6 +110,8 @@ function get_id_post(){
     $db->close();
 }
 
+
+// user name sorter
 function sort_username($username){
   global $db;
   $pattern = "/([A-Za-z]+[0-9]|[0-9]+[A-Za-z])[A-Za-z0-9]*/";
@@ -120,9 +131,11 @@ function sort_username($username){
             }
         $result->free();
           $db->close();
-          }
-       }
+    }
+}
 
+
+// email sorter
 function sort_email($user_email){
   global $db;
   $pattern = "/^\w+((-\w+)|(\.\w+))*\@[A-Za-z-0-9]+((\.|-)[A-Za-z-0-9]+)*\.[A-Za-z-0-9]+$/";
@@ -145,6 +158,8 @@ function sort_email($user_email){
     }
 }
 
+
+// password sorter
 function sort_password($password){
    $pattern = "/^.{6,20}$/";
      if(!preg_match($pattern, $password)){
@@ -154,6 +169,8 @@ function sort_password($password){
      }
 }
 
+
+// insert data to the database
 function insert_to_database($username, $email, $password, $image){
   $password = md5($password);
   global $db;
@@ -164,18 +181,20 @@ function insert_to_database($username, $email, $password, $image){
       $sql .= " `user_password`='{$password}', ";
       $sql .= " `user_image`='{$image}' ";
         $result = $db->query($sql);
-        var_dump(mysqli_error($db));
-          if($db->error){
-            return 3;
-          } else if(!$result){
-            return 2;
-          } else {
-            return 1;
-          }
-          $result->free();
-            $db->close();
-      }
+  var_dump(mysqli_error($db));
+    if($db->error){
+      return 3;
+    } else if(!$result){
+      return 2;
+    } else {
+      return 1;
+    }
+  $result->free();
+    $db->close();
+}
 
+
+// set cookie when login is successful
 function set_my_cookie($username, $password){
   global $db;
   require_once("db.php");
@@ -187,12 +206,16 @@ function set_my_cookie($username, $password){
   var_dump($_COOKIE);
 }
 
+
+// set cookie when login is successful
 function set_this_cookie($id, $password){
     setcookie("id", $id,0,"/");
       $security = md5($id.$password."two_plus_two");
         setcookie("security",$security,0,"/");
 }
 
+
+// login find user
 function find_user($id){
   global $db;
     require_once("db.php");
@@ -206,6 +229,7 @@ function find_user($id){
 }
 
 
+// log in the user
 function login_user($username, $pwd){
   global $db;
   $username = addslashes($username);
@@ -220,6 +244,7 @@ function login_user($username, $pwd){
 }
 
 
+// email sorter / check if email exists
 function sorter_email($email, $pwd){
   global $db;
     require_once("db.php");
@@ -241,6 +266,8 @@ function sorter_email($email, $pwd){
     $db->close();
 }
 
+
+// check if user name exists
 function sorter_user($user, $pwd){
   global $db;
     require_once("db.php");
@@ -273,7 +300,7 @@ function edit_data($post_id){
 
 
 
-
+// edit data
 function data_edit($post_id){
   global $db;
   require_once("db.php");
@@ -287,7 +314,7 @@ function data_edit($post_id){
 
 
 
-
+// comments data
 function comment_data($post_id){
   $db = new mysqli();
     $db->connect("localhost", "bonbon", "123", "social_media");
@@ -307,6 +334,7 @@ function comment_data($post_id){
     return $array_setter;
 }
 
+// insert values
 function user_value($post_id){
   $db = new mysqli();
     $db->connect("localhost", "bonbon", "123", "social_media");
@@ -323,7 +351,7 @@ function user_value($post_id){
 }
 
 
-
+// fetch comments
 function get_comments($id){
   $db = new mysqli();
     $db->connect("localhost", "bonbon", "123", "social_media");
@@ -342,6 +370,8 @@ function get_comments($id){
     return $array_set;
 }
 
+
+// updating comments
 function update_comments($id, $title, $comment){
   $db = new mysqli();
     $db->connect("localhost", "bonbon", "123", "social_media");
@@ -352,6 +382,8 @@ function update_comments($id, $title, $comment){
         $result = $db->query($sql);
 }
 
+
+// fetch user data
 function user_data($post_id){
   $db = new mysqli();
     $db->connect("localhost", "bonbon", "123", "social_media");
@@ -368,7 +400,7 @@ function user_data($post_id){
 
 
 
-
+// delete user post
 function delete_post($id, $image){
   $db = new mysqli();
     $db->connect("localhost", "bonbon", "123", "social_media");
@@ -382,6 +414,7 @@ function delete_post($id, $image){
 }
 
 
+// insert items 
 function insert_items($user, $id, $title, $time, $comment){
   $db = new mysqli();
     $db->connect("localhost", "bonbon", "123", "social_media");
@@ -396,6 +429,8 @@ function insert_items($user, $id, $title, $time, $comment){
     $db->close();
 }
 
+
+// delete comments
 function delete_comment($id){
   $db = new mysqli();
     $db->connect("localhost", "bonbon", "123", "social_media");

@@ -16,7 +16,7 @@ body {
 }
 
 
-/* ///////////////////////////////////////// */
+/* styles for comments */
 .comments{
   margin-top: 30px;
 }
@@ -46,14 +46,14 @@ body {
 }
 
 
-/* //////// image upload /////// */
+/* image upload */
 .img-upload img a{
   width: 500px;
   height: 500px;
 }
 
 
-/* /////////////////////////////////////////////// */
+/* styles for login */
 .login{
   margin-top: 120px;
   padding-bottom: 28px;
@@ -68,10 +68,10 @@ body {
 .login h2{
   width: 100%;
   text-align: center;
-  background:
+  background: ""
 }
 
-/* ////////////////////////////////////////// */
+/* styles for forms */
 .form-height{
   height: 75px;
   margin-bottom: 5px;
@@ -88,7 +88,7 @@ body {
 }
 
 
-/* ///////////////////////////////*/
+/* styles for login form */
 
 .login form .btn-setter{
   width: 100%;
@@ -118,7 +118,7 @@ body {
   float: right;
 }
 
-/* ////////////////////////////////////////// */
+/* logout form styles */
 .logout .page-display div div img {
   width: 100%;
 }
@@ -174,7 +174,7 @@ body {
 
 
 
-/* ////////////////////////////////// */
+/* styles for comments form */
 
 .comments .cards-bkg h3{
   margin: 0 0 5px 0 !important;
@@ -208,7 +208,6 @@ body {
 }
 
 .small-text{
-  /* background: gray !important; */
   font-size: 10px;
   height: 10px !important;
   float: right !important;
@@ -216,4 +215,3 @@ body {
   line-height: 10px !important;
 }
 
-/*  */
